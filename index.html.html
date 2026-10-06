@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🍸 你是哪一種人生調酒？｜六種人格測驗</title>
+<style>
+:root{
+  --bg:#f5f0e9;--paper:#fffdf9;--ink:#2c2521;--muted:#83766c;
+  --line:#e7ddd3;--accent:#7a5742;--accent2:#b98b69;--shadow:0 18px 55px rgba(64,44,31,.12);
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 20% 0%,#fff8ed 0,#f5f0e9 42%,#eee6dd 100%);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;min-height:100vh}
+.app{width:min(760px,92vw);margin:0 auto;padding:34px 0 60px}
+.brand{text-align:center;margin-bottom:22px}
+.eyebrow{letter-spacing:.22em;font-size:12px;color:var(--accent);font-weight:700}
+h1{font-family:Georgia,"Noto Serif TC",serif;font-size:clamp(30px,7vw,52px);margin:9px 0 7px;letter-spacing:-.04em}
+.subtitle{color:var(--muted);font-size:14px}
+.card{background:rgba(255,253,249,.92);border:1px solid rgba(255,255,255,.8);border-radius:28px;box-shadow:var(--shadow);padding:clamp(22px,5vw,42px);backdrop-filter:blur(10px)}
+.intro{text-align:center}
+.cocktail{font-size:54px;margin:4px 0 14px}
+.intro h2{font-size:27px;margin:0 0 12px}
+.intro p{color:#6f6259;line-height:1.9;margin:0 auto 24px;max-width:560px}
+.meta{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:0 0 28px}
+.tag{background:#f1e8df;color:#725440;padding:7px 12px;border-radius:999px;font-size:12px}
+button{font:inherit}
+.primary{border:0;background:#332923;color:#fff;border-radius:999px;padding:14px 25px;cursor:pointer;font-weight:700;box-shadow:0 8px 18px rgba(51,41,35,.16);transition:.18s}
+.primary:hover{transform:translateY(-1px);background:#211a16}
+.hidden{display:none!important}
+.topbar{display:flex;align-items:center;gap:13px;margin-bottom:24px}
+.counter{font-size:13px;color:var(--muted);white-space:nowrap}
+.progress{height:7px;background:#eee4da;border-radius:99px;overflow:hidden;flex:1}
+.progress>span{display:block;height:100%;background:linear-gradient(90deg,#8b624a,#c39a7b);width:0;transition:.35s}
+.question-no{font-size:13px;color:var(--accent);font-weight:700;letter-spacing:.12em;margin-bottom:10px}
+.question{font-size:clamp(23px,5vw,31px);line-height:1.45;margin:0 0 24px;font-weight:750;letter-spacing:-.02em}
+.options{display:grid;gap:12px}
+.option{width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px 18px;cursor:pointer;color:var(--ink);display:flex;align-items:flex-start;gap:14px;transition:.18s;min-height:66px}
+.option:hover{border-color:#b89276;background:#fffaf5;transform:translateY(-1px)}
+.letter{width:29px;height:29px;border-radius:50%;background:#f2e9e0;color:#76543f;display:grid;place-items:center;font-size:13px;font-weight:800;flex:0 0 auto}
+.option span:last-child{line-height:1.55}
+.note{text-align:center;color:#a08e81;font-size:12px;margin-top:20px}
+.result{text-align:center}
+.result .icon{font-size:72px;margin-bottom:4px}
+.result .label{font-size:12px;letter-spacing:.2em;color:var(--accent);font-weight:800}
+.result h2{font-family:Georgia,"Noto Serif TC",serif;font-size:38px;margin:8px 0 5px}
+.drink{font-size:18px;font-weight:800;color:#6d4e3a;margin-bottom:18px}
+.quote{font-family:Georgia,"Noto Serif TC",serif;font-size:20px;line-height:1.65;margin:20px auto 26px;max-width:590px}
+.result-block{text-align:left;border-top:1px solid var(--line);padding-top:22px;margin-top:22px}
+.result-block h3{font-size:15px;margin:0 0 9px}
+.result-block p{color:#655950;line-height:1.9;margin:0}
+.pills{display:flex;flex-wrap:wrap;gap:7px}
+.pill{background:#f3e9df;color:#6e503d;border-radius:999px;padding:7px 10px;font-size:12px}
+.secondary{margin-top:22px;background:transparent;border:1px solid #d7c8bb;color:#5d493c;border-radius:999px;padding:12px 20px;cursor:pointer}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.info{background:#f8f2eb;border-radius:16px;padding:14px;text-align:left}
+.info small{display:block;color:#9a887b;font-size:11px;margin-bottom:4px}
+.info strong{font-size:14px;line-height:1.5}
+.secondary-result{margin-top:26px;background:#faf5ef;border:1px solid #eadfd5;border-radius:20px;padding:18px;text-align:left}
+.secondary-result .mini{font-size:12px;color:#8b7667;letter-spacing:.12em}
+.secondary-result strong{display:block;font-size:20px;margin:4px 0}
+@media(max-width:560px){.app{padding-top:22px}.card{border-radius:22px;padding:22px 18px}.result-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="app">
+  <header class="brand">
+    <div class="eyebrow">PERSONALITY × COCKTAIL</div>
+    <h1>你是哪一種人生調酒？</h1>
+    <div class="subtitle">24 題・約 3～5 分鐘・六種人格</div>
+  </header>
+
+  <section id="intro" class="card intro">
+    <div class="cocktail">🍸</div>
+    <h2>把你的人生，調成一杯酒。</h2>
+    <p>沒有標準答案。憑第一直覺選擇最像你的那一個，測驗會從你的選擇中找出「主要人格」與「次要人格」。</p>
+    <div class="meta">
+      <span class="tag">24 題</span><span class="tag">4 選 1</span><span class="tag">隱藏計分</span><span class="tag">6 種人格</span>
+    </div>
+    <button class="primary" id="startBtn">開始測驗 →</button>
+  </section>
+
+  <section id="quiz" class="card hidden">
+    <div class="topbar">
+      <div class="counter" id="counter">1 / 24</div>
+      <div class="progress"><span id="progress"></span></div>
+    </div>
+    <div class="question-no" id="qno">QUESTION 01</div>
+    <h2 class="question" id="question"></h2>
+    <div class="options" id="options"></div>
+    <div class="note">選擇後會自動進入下一題</div>
+  </section>
+
+  <section id="result" class="card result hidden">
+    <div class="icon" id="rIcon"></div>
+    <div class="label">YOUR PERSONALITY</div>
+    <h2 id="rName"></h2>
+    <div class="drink" id="rDrink"></div>
+    <div class="quote" id="rQuote"></div>
+
+    <div class="result-grid">
+      <div class="info"><small>基酒</small><strong id="rBase"></strong></div>
+      <div class="info"><small>味覺印象</small><strong id="rTaste"></strong></div>
+      <div class="info" style="grid-column:1/-1"><small>風味</small><strong id="rFlavor"></strong></div>
+    </div>
+
+    <div class="result-block">
+      <h3>你的人格特質</h3>
+      <p id="rDesc1"></p>
+      <p style="margin-top:12px" id="rDesc2"></p>
+    </div>
+    <div class="result-block">
+      <h3>你的人生關鍵字</h3>
+      <div class="pills" id="rKeywords"></div>
+    </div>
+    <div class="secondary-result">
+      <div class="mini">YOUR SECONDARY PERSONALITY</div>
+      <strong id="sName"></strong>
+      <div id="sDrink" style="color:#75645a;font-size:13px"></div>
+    </div>
+    <button class="secondary" id="restartBtn">↻ 再測一次</button>
+  </section>
+</main>
+
+<script>
+const questions = [{"q": "突然多出一個完全沒有安排的週末，你會？", "options": ["找個沒去過的地方走走", "終於可以好好休息", "把一直拖著沒做的事情完成", "問朋友有沒有想一起出去"], "scores": [{"0": 2}, {"1": 2}, {"2": 2}, {"3": 2}]}, {"q": "如果公司突然要你負責一個完全陌生的任務？", "options": ["覺得有點興奮，想試試看", "先了解清楚再決定怎麼做", "直接開始研究怎麼完成", "先找有經驗的人討論"], "scores": [{"0": 2}, {"5": 2}, {"2": 2}, {"3": 2}]}, {"q": "旅行時，你比較喜歡？", "options": ["行程留很多空間，看到什麼就玩什麼", "住宿舒服、交通方便最重要", "把重要景點和行程安排好", "和喜歡的人一起才是重點"], "scores": [{"0": 2}, {"1": 2}, {"2": 2}, {"3": 2}]}, {"q": "朋友突然約你今晚出去，你通常？", "options": ["好啊！去哪裡？", "看看今天累不累", "先確認自己原本的安排", "如果是熟悉的人就很容易答應"], "scores": [{"4": 2}, {"1": 2}, {"2": 2}, {"3": 2}]}, {"q": "你買一個新東西時，最在意？", "options": ["有沒有新鮮感", "好不好用、耐不耐用", "能不能解決我的問題", "看起來是不是有質感、讓自己開心"], "scores": [{"0": 1, "4": 1}, {"1": 2}, {"2": 2}, {"4": 1, "3": 1}]}, {"q": "當生活開始變得每天都一樣，你會？", "options": ["很想做點完全不同的事情", "覺得其實穩定也不錯", "設定一個新的目標", "找朋友或安排活動改變心情"], "scores": [{"0": 2}, {"1": 2}, {"2": 2}, {"4": 2}]}, {"q": "遇到重大決定時，你通常第一個想的是？", "options": ["「我想不想試試看？」", "「這樣做安全嗎？」", "「哪個選擇最有效？」", "「這會不會影響其他人？」"], "scores": [{"0": 1}, {"1": 1}, {"2": 2}, {"3": 2}]}, {"q": "如果你突然得到一筆額外的錢，你比較可能？", "options": ["拿去旅行或體驗新事物", "存起來，讓自己更安心", "投資自己或未來", "買一直想要的東西"], "scores": [{"0": 2, "4": 1}, {"1": 2}, {"2": 2, "5": 1}, {"4": 2}]}, {"q": "你比較受不了哪一種情況？", "options": ["一成不變", "沒有安全感", "事情失去控制", "和重要的人產生衝突"], "scores": [{"0": 2}, {"1": 2}, {"2": 2}, {"3": 2}]}, {"q": "朋友心情不好來找你，你通常？", "options": ["帶他出去散散心", "陪著他，讓他慢慢說", "幫他分析問題", "很容易跟著他的情緒一起難過"], "scores": [{"4": 2}, {"3": 2}, {"5": 2}, {"3": 2}]}, {"q": "如果今天突然不用上班，你最想？", "options": ["去一個平常不會去的地方", "在家舒服地過一天", "做一直想做但沒時間做的事情", "找朋友吃飯聊天"], "scores": [{"0": 2}, {"1": 2}, {"5": 2}, {"4": 2}]}, {"q": "你希望別人怎麼形容你？", "options": ["很有趣", "很可靠", "很有能力", "很溫暖"], "scores": [{"4": 2}, {"1": 2}, {"2": 2}, {"3": 2}]}, {"q": "如果有人質疑你的決定，你通常？", "options": ["「沒關係，我想試過再說。」", "重新確認是不是有風險", "想辦法證明自己的判斷", "會在意對方為什麼這樣想"], "scores": [{"0": 2}, {"1": 1}, {"2": 2}, {"3": 1}]}, {"q": "你比較喜歡哪種工作方式？", "options": ["有自由，可以自己發揮", "有明確規則和穩定流程", "有目標，可以挑戰成果", "有團隊，可以和大家一起完成"], "scores": [{"0": 2}, {"1": 2}, {"2": 2}, {"3": 2}]}, {"q": "如果計畫突然被打亂，你會？", "options": ["沒差，順其自然", "有點焦慮，需要重新安排", "馬上想辦法把事情拉回正軌", "先看看大家的狀態"], "scores": [{"0": 1}, {"1": 2}, {"2": 2}, {"3": 1}]}, {"q": "你最容易因為什麼事情感到幸福？", "options": ["第一次體驗到某件事", "有一個舒服、安心的環境", "完成一件很難的事情", "和喜歡的人一起度過時間"], "scores": [{"0": 2}, {"1": 2}, {"2": 2}, {"3": 2}]}, {"q": "如果你發現自己不喜歡現在的生活，你會？", "options": ["直接換個方式生活", "先想清楚再慢慢調整", "設定目標，一步一步改變", "找人聊聊自己的感受"], "scores": [{"0": 2}, {"1": 1}, {"2": 2}, {"3": 2}]}, {"q": "你對「成功」的理解比較接近？", "options": ["活得精彩", "過得安心", "成為自己想成為的人", "擁有重要的人與幸福的關係"], "scores": [{"0": 2}, {"1": 2}, {"2": 2}, {"3": 2}]}, {"q": "你最容易被什麼吸引？", "options": ["新奇、有趣的東西", "舒服、有安全感的東西", "有挑戰、可以變強的東西", "有情感、有故事的東西"], "scores": [{"0": 1, "4": 1}, {"1": 1, "5": 1}, {"2": 2}, {"3": 1, "5": 1}]}, {"q": "如果可以立刻學會一項能力，你選？", "options": ["一項可以帶我探索世界的技能", "一項讓生活更輕鬆的技能", "一項能讓自己更強大的技能", "一項能讓自己更理解別人的技能"], "scores": [{"0": 1, "5": 1}, {"1": 2}, {"2": 2}, {"3": 1, "5": 1}]}, {"q": "你比較害怕？", "options": ["人生沒有新鮮感", "未來充滿不確定", "自己失去競爭力", "被重要的人離開"], "scores": [{"0": 2}, {"1": 2}, {"2": 2}, {"3": 2}]}, {"q": "當你完成一個很大的目標後，你通常？", "options": ["馬上想下一個刺激的挑戰", "想休息一下享受成果", "覺得自己又變強了一點", "想和重要的人分享"], "scores": [{"0": 2}, {"1": 2}, {"2": 2}, {"3": 2}]}, {"q": "如果只能選一種生活，你比較想要？", "options": ["自由但充滿未知", "穩定但平靜", "忙碌但不斷成長", "不一定成功，但身邊有重要的人"], "scores": [{"0": 2}, {"1": 2}, {"2": 2}, {"3": 2}]}, {"q": "最後，如果用一句話形容你，你比較接近？", "options": ["「人生就是要去體驗。」", "「安穩地過好每一天就很好。」", "「我想成為更好的自己。」", "「有重要的人，一切才有意義。」"], "scores": [{"0": 2}, {"1": 2}, {"2": 2}, {"3": 2}]}];
+const profiles = [{"icon": "🚀", "name": "探索型", "drink": "自由浪潮", "base": "龍舌蘭 Tequila", "flavor": "青檸 × 葡萄柚 × 海鹽 × 氣泡水", "taste": "刺激 × 酸爽 × 清新", "title": "人生太短，怎麼能只走一條路？", "desc1": "刺激而清爽，帶著一點不安於現狀的野心。你喜歡未知，也享受第一次嘗試的感覺。比起循著別人走過的路，你更想親自看看前方到底有什麼。你很難長期待在一成不變的生活裡，因為對你來說，人生最迷人的地方，就是永遠還有下一個可能。", "desc2": "你通常具有很強的好奇心，容易被新鮮的人、事、物吸引，也願意為了體驗未知而踏出舒適圈。你不一定需要一個非常明確的終點，只要沿途有值得探索的風景，就能讓你感到興奮。", "keywords": "自由｜冒險｜新鮮感｜突破｜可能性"}, {"icon": "🌿", "name": "安定型", "drink": "溫柔日常", "base": "蘭姆酒 Rum", "flavor": "香草 × 焦糖 × 蘋果 × 肉桂", "taste": "溫暖 × 柔順 × 香甜", "title": "不用轟轟烈烈，也能把日子過得很好？", "desc1": "溫暖而柔和，像一杯在熟悉的午後慢慢喝完的酒。你不急著追逐所有新鮮事，更在意眼前的人與生活是否讓自己感到安心。你喜歡穩定，也珍惜那些經得起時間的關係。對你來說，真正的幸福不一定要轟轟烈烈，而是有一個可以放心做自己的地方。", "desc2": "你通常會在做決定之前考慮長期影響，希望生活是有秩序、有預期的。你重視承諾，也很珍惜值得信任的人。比起短暫的刺激，你更喜歡慢慢累積出來的安全感與踏實感。", "keywords": "安全感｜穩定｜信任｜踏實｜歸屬感"}, {"icon": "👑", "name": "掌控型", "drink": "主場", "base": "琴酒 Gin", "flavor": "葡萄柚 × 迷迭香 × 苦橙 × 通寧水", "taste": "俐落 × 苦甜 × 強烈", "title": "與其等待安排，不如自己決定方向。", "desc1": "俐落而強烈，帶著一點不輕易妥協的鋒芒。你習慣知道自己要什麼，也習慣為自己的選擇負責。與其等待事情自己變好，你更傾向直接出手改變它。你不害怕壓力，反而容易在挑戰裡找到自己的價值。對你來說，掌握方向，遠比隨波逐流來得痛快。", "desc2": "你通常有明確的目標與標準，遇到問題時也會傾向快速找到解決方法。你希望自己的努力能產生實際成果，也不喜歡把重要的事情交給運氣。你的自信來自於能力，而成就感則來自於「我做到了」。", "keywords": "目標｜效率｜自信｜決斷｜成就感"}, {"icon": "💗", "name": "共感型", "drink": "心事", "base": "伏特加 Vodka", "flavor": "荔枝 × 玫瑰 × 草莓 × 檸檬", "taste": "柔和 × 果香 × 細膩", "title": "有些情緒，不用說出口你就懂了。", "desc1": "柔和而細膩，甜味裡藏著一點不容易被發現的酸。你總能注意到別人忽略的小細節，一個語氣、一個眼神，甚至一點氣氛的變化，都可能被你捕捉到。你很重視感受，也很在意彼此是不是真的理解對方。對你來說，真正靠近一個人，不只是陪在身邊，而是能夠讀懂那些沒有說出口的話。", "desc2": "你很容易站在別人的角度思考，也願意花時間傾聽與陪伴。你在關係裡追求的不是表面的熱鬧，而是真正的連結。但有時候，你也可能太容易受到周遭情緒影響，需要學會把別人的感受與自己的感受分開。", "keywords": "共感｜細膩｜關係｜理解｜真誠"}, {"icon": "☀️", "name": "享樂型", "drink": "今天就喝", "base": "白蘭地 Brandy", "flavor": "鳳梨 × 百香果 × 蜂蜜 × 橙皮", "taste": "甜潤 × 果香 × 明亮", "title": "快樂這件事，為什麼要等到明天？", "desc1": "明亮而甜美，像陽光灑進杯裡，光是看著就讓人心情變好。你很懂得替平凡的日子找一些值得期待的事情，一頓好吃的飯、一次臨時起意的旅行，甚至一個突然讓你大笑的瞬間，都能成為你的快樂來源。你不喜歡把人生過得太嚴肅，因為對你來說，能夠享受當下，本身就是一種能力。", "desc2": "你通常很重視生活品質與體驗，喜歡和有趣的人相處，也願意為了讓自己開心而花時間。你相信努力工作是為了擁有更好的生活，而不是讓生活只剩下工作。對你來說，人生值得被好好品嚐，而不是匆匆忙忙地走完。", "keywords": "快樂｜體驗｜自由｜熱情｜享受當下"}, {"icon": "🔮", "name": "思考型", "drink": "深夜觀察者", "base": "威士忌 Whiskey", "flavor": "檸檬 × 黑糖 × 咖啡 × 苦橙", "taste": "醇厚 × 微苦 × 複雜", "title": "你看到的，往往比別人多一層。", "desc1": "醇厚而複雜，第一口也許低調，卻會在最後留下很長的餘韻。你習慣觀察、思考，再決定要不要說出口。很多人只看到事情的表面，而你總想再往下挖一層。你不急著得到一個簡單的答案，反而享受慢慢拆解、理解與推敲的過程。對你來說，真正有趣的從來不是答案，而是理解答案背後的原因。", "desc2": "你通常有自己的思考節奏，不容易因為別人的意見就立刻改變想法。你喜歡研究、分析，也需要獨處的時間整理自己的思緒。你可能不是最早表達意見的人，卻常常是想得最深的人。", "keywords": "思考｜觀察｜理性｜深度｜洞察"}];
+
+let current = 0;
+let scores = Array(profiles.length).fill(0);
+
+const $ = id => document.getElementById(id);
+
+function start(){
+  current = 0;
+  scores = Array(profiles.length).fill(0);
+  $("intro").classList.add("hidden");
+  $("result").classList.add("hidden");
+  $("quiz").classList.remove("hidden");
+  renderQuestion();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function renderQuestion(){
+  const q = questions[current];
+  $("counter").textContent = `${current+1} / ${questions.length}`;
+  $("qno").textContent = `QUESTION ${String(current+1).padStart(2,"0")}`;
+  $("question").textContent = q.q;
+  $("progress").style.width = `${((current)/questions.length)*100}%`;
+
+  const box = $("options");
+  box.innerHTML = "";
+  q.options.forEach((text, i) => {
+    const btn = document.createElement("button");
+    btn.className = "option";
+    btn.innerHTML = `<span class="letter">${"ABCD"[i]}</span><span>${text}</span>`;
+    btn.addEventListener("click", () => choose(i));
+    box.appendChild(btn);
+  });
+}
+
+function choose(index){
+  const scoring = questions[current].scores[index];
+  Object.entries(scoring).forEach(([personality, points]) => {
+    scores[Number(personality)] += points;
+  });
+
+  current++;
+  if(current >= questions.length){
+    showResult();
+  }else{
+    renderQuestion();
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+}
+
+function showResult(){
+  $("quiz").classList.add("hidden");
+  $("result").classList.remove("hidden");
+  $("progress").style.width = "100%";
+
+  const ranking = scores.map((score,i)=>({score,i}))
+    .sort((a,b)=>b.score-a.score || a.i-b.i);
+  const main = profiles[ranking[0].i];
+  const secondary = profiles[ranking[1].i];
+
+  $("rIcon").textContent = main.icon;
+  $("rName").textContent = main.name;
+  $("rDrink").textContent = `「${main.drink}」`;
+  $("rQuote").textContent = `「${main.title}」`;
+  $("rBase").textContent = main.base;
+  $("rTaste").textContent = main.taste;
+  $("rFlavor").textContent = main.flavor;
+  $("rDesc1").textContent = main.desc1;
+  $("rDesc2").textContent = main.desc2;
+  $("rKeywords").innerHTML = main.keywords.split("｜").map(k=>`<span class="pill">${k}</span>`).join("");
+  $("sName").textContent = `${secondary.icon} ${secondary.name}`;
+  $("sDrink").textContent = `專屬調酒：${secondary.drink}`;
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+$("startBtn").addEventListener("click", start);
+$("restartBtn").addEventListener("click", start);
+</script>
+</body>
+</html>
